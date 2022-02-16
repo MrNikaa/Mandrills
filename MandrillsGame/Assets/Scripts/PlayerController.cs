@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     float wallJumpVelocity;
-    //public Animator m_Animator;
+    public Animator m_Animator;
     private Vector3 direction;
     public float speed = 5f;
     public float jumpForce = 8f;
@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         direction.x = horizontalInput * speed;
-        //m_Animator.SetFloat("run", Mathf.Abs(horizontalInput)); // Mathf.Abs i igivea rac  modulebi anu |-5| = 5 
+        m_Animator.SetFloat("run", Mathf.Abs(horizontalInput)); // Mathf.Abs i igivea rac  modulebi anu |-5| = 5 
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
-        //m_Animator.SetBool("isGrounded", isGrounded);
+        m_Animator.SetBool("isGrounded", isGrounded);
 
         Jump();
         if(horizontalInput != 0){ 
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             if(canDoubleJump && Input.GetButtonDown("Jump"))
             {
-                //m_Animator.SetTrigger("doubleJump");
+                m_Animator.SetTrigger("doubleJump");
                 direction.y = jumpForce;
                 canDoubleJump = false;
             }
