@@ -5,12 +5,11 @@ using UnityEngine;
 public class Swinging : MonoBehaviour
 {
 
-    [SerializeField]Animator m_Animator;
+    [SerializeField] Animator m_Animator;
     CharacterController cc;
-    [SerializeField]GameObject jumpArea;
+    [SerializeField] GameObject jumpArea;
+    [SerializeField] float amountToAdd;
     PlayerController playerController;
-    private Vector3 direction;
-    [SerializeField] float moveSpeed;
 
     private void Start()
     {
@@ -19,6 +18,8 @@ public class Swinging : MonoBehaviour
         playerController.enabled = true;
         cc.enabled = true;
     }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,9 +31,6 @@ public class Swinging : MonoBehaviour
 
     IEnumerator StartSwinging()
     {
-        direction = m_Animator.deltaPosition;
-        cc.Move(direction * Time.deltaTime);
-
         m_Animator.SetTrigger("swing");
         cc.enabled = false;
         yield return new WaitForSeconds(2.3f);
