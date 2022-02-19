@@ -33,33 +33,35 @@ public class PlayerController : MonoBehaviour
         m_Animator.SetBool("isGrounded", isGrounded);
 
         Jump();
-        if(horizontalInput != 0){ 
-            Quaternion flip = Quaternion.LookRotation(new Vector3(0,0,horizontalInput));
+        if (horizontalInput != 0)
+        {
+            Quaternion flip = Quaternion.LookRotation(new Vector3(0, 0, horizontalInput));
             transform.rotation = flip;
         }
         cc.Move(direction * Time.deltaTime);
     }
 
-    void Jump(){
+    void Jump()
+    {
         // es kodi anichebs chvens motamashes axtomis funqicas
 
-        if(isGrounded)
+        if (isGrounded)
         {
             canDoubleJump = true;
-            if(Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
                 direction.y = jumpForce;
             }
         }
-        else
+/*        else
         {
-            if(canDoubleJump && Input.GetButtonDown("Jump"))
+            if (canDoubleJump && Input.GetButtonDown("Jump"))
             {
-                m_Animator.SetTrigger("doubleJump");
+                //m_Animator.SetTrigger("doubleJump");
                 direction.y = jumpForce;
                 canDoubleJump = false;
             }
-        }
+        }*/
 
         direction.y += gravity * Time.deltaTime;
     }
