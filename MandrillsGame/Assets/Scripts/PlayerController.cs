@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     CharacterController cc;
     public Transform groundCheck;
+
+    public Transform wallCheck;
     public LayerMask groundLayer;
     float wallJumpVelocity;
     public Animator m_Animator;
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
 
     public bool isGrounded;
+    public bool isWalled;
+
     void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -30,7 +34,17 @@ public class PlayerController : MonoBehaviour
         direction.x = horizontalInput * speed;
         m_Animator.SetFloat("run", Mathf.Abs(horizontalInput)); // Mathf.Abs i igivea rac  modulebi anu |-5| = 5 
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
+        isWalled = Physics.CheckSphere(wallCheck.position, 0.2f, groundLayer);
         m_Animator.SetBool("isGrounded", isGrounded);
+
+        if(isWalled){
+            m_Animator.SetBool("isWalled", true);
+            gravity = -0.005f;
+            direction.y = -5;
+        }else{
+            m_Animator.SetBool("isWalled", false);
+            gravity = -20f;
+        }
 
         Jump();
         if (horizontalInput != 0)
@@ -45,7 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         // es kodi anichebs chvens motamashes axtomis funqicas
 
-        if (isGrounded)
+        if (isGrounded && !isWalled)
         {
             canDoubleJump = true;
             if (Input.GetButtonDown("Jump"))

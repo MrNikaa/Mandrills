@@ -8,9 +8,12 @@ public class Swinging : MonoBehaviour
     [SerializeField] Animator m_Animator;
     CharacterController cc;
     [SerializeField] GameObject jumpArea;
-    [SerializeField] float amountToAdd;
     PlayerController playerController;
+    [SerializeField] GameObject gameObject;
 
+
+
+    
     private void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -19,7 +22,10 @@ public class Swinging : MonoBehaviour
         cc.enabled = true;
     }
 
+    private void Update()
+    {
 
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -36,7 +42,12 @@ public class Swinging : MonoBehaviour
         yield return new WaitForSeconds(2.3f);
         cc.enabled = true;
         m_Animator.SetBool("afterSwing", true);
+
         Destroy(jumpArea);
+    }
+
+    void MoveWhileSwinging(float amountToAdd){
+        transform.Translate(amountToAdd,0,0 * Time.deltaTime);        
     }
 
 }

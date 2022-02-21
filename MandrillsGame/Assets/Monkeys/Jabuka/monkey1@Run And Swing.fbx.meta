@@ -46,19 +46,47 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.20948905
+        functionName: MoveWhileSwinging
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3c729926d7450bb4c8699c6128f1d7f8, type: 3}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4083527
+        functionName: MoveWhileSwinging
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3c729926d7450bb4c8699c6128f1d7f8, type: 3}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.66934305
+        functionName: MoveWhileSwinging
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3c729926d7450bb4c8699c6128f1d7f8, type: 3}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9427007
+        functionName: MoveWhileSwinging
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3c729926d7450bb4c8699c6128f1d7f8, type: 3}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
